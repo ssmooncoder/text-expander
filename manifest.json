@@ -1,0 +1,29 @@
+{
+  "name": "Text Expander",
+  "description": "Shorthand abbreviations expand to full text.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Add or Remove Entries",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage", "activeTab", "scripting"],
+  "commands": {
+    "expand": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+G",
+        "mac": "MacCtrl+Shift+G"
+      },
+      "description": "Expand text under cursor if available."
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["expand.js"]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>List of Expansions</title>
+</head>
+<body>
+  <div id="options">
+    <!-- <button id="add-button" class="btn btn-primary" expanded="false"> -->
+      <!-- <svg height="24" width="24" xmlns="http://www.w3.org/2000/svg" class="icon" aria-label="toggle" role="img"><path d="M10 17l5-5-5-5v10z"></path><path d="M0 24V0h24v24H0z" fill="none"></path></svg> -->
+      <!-- Add Entry -->
+    <!-- </button> -->
+    <!-- <input id="toggle-add-entry" class="toggle" type="checkbox">
+    <label for="toggle-add-entry" class="lbl-toggle">Add</label> -->
+    <form id="add-entry-form" class="content-inner">
+      <input type="text" class="entry-field" autocomplete="off" name="entry-key" placeholder="Key" required>
+      <input type="text" class="entry-field" autocomplete="off" name="entry-value" placeholder="Value" required>
+      <button type="submit" id="add-entry-button" class="btn btn-primary">Press Enter to Submit</button>
+    </form>
+  </div>
+  <hr>
+  <button id="remove-entry" class="btn btn-default" disabled>Select to Remove</button>
+  <div id="expansion-list">
+    <!-- <div class="collapsible-content"> -->
+      
+    <!-- </div> -->
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
