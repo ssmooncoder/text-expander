@@ -27,14 +27,14 @@ function addNewEntry() {
 
 addButton.addEventListener("click", addNewEntry);
 
-async function removeSelectedEntries() {
+function removeSelectedEntries() {
   let entries = document.querySelectorAll('div[data="local-storage"] input.mark-remove');
   
   let checkedList = [...entries].filter(entry => entry.checked);
   
   let keys = checkedList.map(checked => checked.name);
   
-  await chrome.storage.local.remove(keys, repopulate);
+  chrome.storage.local.remove(keys, repopulate);
   // repopulate();
 }
 
