@@ -4,16 +4,31 @@ let addForm = document.getElementById("add-entry-form");
 let expansionList = document.getElementById("expansion-list");
 
 // Pressing enter also posts form. No spaces allowed.
-let inputs = document.querySelectorAll("input.entry-field");
-for (let input of inputs) {
-  input.addEventListener("keydown", function(event) {
-    if (event.keyCode === 13) {
+let input = document.querySelector("input.entry-field");
+input.addEventListener("keydown", function(event) {
+  if (event.metaKey && event.keyCode === 13) {
+    event.preventDefault();
+    if (input.reportValidity() && textarea.reportValidity()) {
       addNewEntry();
-    } else if (event.keyCode === 32) {
-      event.preventDefault();
     }
-  });
-}
+  } else if (!event.metaKey && event.keyCode === 13) {
+    if (input.reportValidity()) {
+      event.preventDefault();
+      textarea.focus();
+    }
+  }
+});
+
+let textarea = document.querySelector("textarea.entry-field");
+textarea.addEventListener("keydown", function(event) {
+  if (event.metaKey && event.keyCode === 13) {
+    event.preventDefault();
+    if (input.reportValidity() && textarea.reportValidity()) {
+      addNewEntry();
+      input.focus();
+    }
+  }
+});
 
 function addNewEntry() {
   let formData = new FormData(addForm);
@@ -22,10 +37,16 @@ function addNewEntry() {
   let value = data["entry-value"];
   
   chrome.storage.local.set({ [key]: value });
+  input.value = "";
+  textarea.value = "";
   repopulate();  
 }
 
-addButton.addEventListener("click", addNewEntry);
+addButton.addEventListener("click", function(event) {
+  if (input.reportValidity() && textarea.reportValidity()) {
+    addNewEntry();
+  }
+});
 
 function removeSelectedEntries() {
   let entries = document.querySelectorAll('div[data="local-storage"] input.mark-remove');
@@ -70,7 +91,7 @@ function repopulate() {
       let entryKey = document.createElement("li");
       entryKey.classList.add("stored-key");
       entryKey.textContent = key;
-      let entryValue = document.createElement("li");
+      let entryValue = document.createElement("pre");
       entryValue.classList.add("stored-value");
       entryValue.textContent = value;
       entryItem.appendChild(entryKey);
