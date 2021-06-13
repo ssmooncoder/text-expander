@@ -1,5 +1,6 @@
 {
   "name": "Text Expander",
+  "author": "Samuel Moon",
   "description": "Shorthand abbreviations expand to full text.",
   "version": "1.0",
   "manifest_version": 3,

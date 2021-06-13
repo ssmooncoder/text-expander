@@ -11,21 +11,42 @@ body {
   max-width: 400px;
 }
 
+input, ul {
+  margin: 0;
+  padding: 0;
+}
+
 #add-entry-form {
   /* height: 26px; */
   /* margin-bottom: 9px; */
   border: none;
 }
 
-div[data="local-storage"] {
-  display: flex;
+#expansion-list {
+  margin-top: 9px;
 }
 
-div[data="local-storage"] input {
-  align-self: center;
+div[data="local-storage"] {
+  display: flex;
+  border-radius: 3px;
 }
-div[data="local-storage"] ul {
+
+div[data="local-storage"]:hover {
+  background-color: #3c404314;
+}
+
+div[data="local-storage"] input.mark-remove {
+  align-self: center;
+  margin: 0 5px;
+}
+div[data="local-storage"] ul.stored-item {
+  margin: 1px 0 1px 5px;
   list-style: none;
+  flex-grow: 1;
+}
+
+div[data="local-storage"] ul.stored-item li {
+  padding: 2px 0;
 }
 
 .entry-field {
