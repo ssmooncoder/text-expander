@@ -137,21 +137,3 @@ div[data="local-storage"] ul.stored-item li {
   background-color: #37d;
   border-color: #26c
 }
-
-/* #add-button[expanded="true"] #add-entry-form {
-  display: flex;
-}
-
-#add-button[expanded="false"] #add-entry-form {
-  display: none;
-}
-
-#add-button[expanded="true"] ~ #remove-entry,
-#add-button[expanded="true"] ~ #clear-all {
-  display: none
-}
-
-#add-button[expanded="false"] ~ #remove-entry,
-#add-button[expanded="false"] ~ #clear-all {
-  display: flex
-} */

@@ -27,16 +27,6 @@ function addNewEntry() {
 
 addButton.addEventListener("click", addNewEntry);
 
-// addButton.addEventListener("click", (e) => {
-//   let formData = new FormData(addForm);
-//   let data = Object.fromEntries(formData);
-//   let key = data["entry-key"];
-//   let value = data["entry-value"];
-  
-//   chrome.storage.local.set({ [key]: value });
-//   repopulate();
-// });
-
 async function removeSelectedEntries() {
   let entries = document.querySelectorAll('div[data="local-storage"] input.mark-remove');
   
@@ -50,17 +40,6 @@ async function removeSelectedEntries() {
 
 removeButton.addEventListener("click", removeSelectedEntries);
 
-// removeButton.addEventListener("click", function(event) {
-//   let entries = document.querySelectorAll('div[data="local-storage"] input.mark-remove');
-  
-//   let checkedList = [...entries].filter(entry => entry.checked);
-  
-//   let keys = checkedList.map(checked => checked.name);
-  
-//   chrome.storage.local.remove(keys, () => repopulate);
-//   repopulate();
-// });
-
 function handleRemove(e) {
   let entries = document.querySelectorAll('div[data="local-storage"] input.mark-remove');
   console.log(entries);
@@ -71,8 +50,6 @@ function handleRemove(e) {
 }
 
 function repopulate() {
-  // let clone = expansionList.cloneNode();
-  
   while (expansionList.firstChild) {
     expansionList.removeChild(expansionList.firstChild);
   }
@@ -103,9 +80,6 @@ function repopulate() {
     }
   });
   
-  // expansionList.replaceWith(clone);
-  // expansionList.childNodes = clone;
-  // expansionList.appendChild(clone);
 }
 
 repopulate();
