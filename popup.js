@@ -6,12 +6,12 @@ let expansionList = document.getElementById("expansion-list");
 // Pressing enter also posts form. No spaces allowed.
 let input = document.querySelector("input.entry-field");
 input.addEventListener("keydown", function(event) {
-  if (event.metaKey && event.keyCode === 13) {
+  if ((event.metaKey && event.keyCode === 13) || (event.ctrlKey && event.keyCode === 13)) {
     event.preventDefault();
     if (input.reportValidity() && textarea.reportValidity()) {
       addNewEntry();
     }
-  } else if (!event.metaKey && event.keyCode === 13) {
+  } else if ((!event.metaKey && event.keyCode === 13) || (!event.ctrlKey && event.keyCode === 13)) {
     if (input.reportValidity()) {
       event.preventDefault();
       textarea.focus();
@@ -21,7 +21,7 @@ input.addEventListener("keydown", function(event) {
 
 let textarea = document.querySelector("textarea.entry-field");
 textarea.addEventListener("keydown", function(event) {
-  if (event.metaKey && event.keyCode === 13) {
+  if ((event.metaKey && event.keyCode === 13) || (event.ctrlKey && event.keyCode === 13)) {
     event.preventDefault();
     if (input.reportValidity() && textarea.reportValidity()) {
       addNewEntry();
