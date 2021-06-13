@@ -71,9 +71,11 @@ function handleRemove(e) {
 }
 
 function repopulate() {
-  let clone = expansionList.cloneNode();
+  // let clone = expansionList.cloneNode();
   
-  
+  while (expansionList.firstChild) {
+    expansionList.removeChild(expansionList.firstChild);
+  }
   
   chrome.storage.local.get(null, (entries) => {
     console.log(entries);
@@ -97,11 +99,11 @@ function repopulate() {
       entryItem.appendChild(entryKey);
       entryItem.appendChild(entryValue);
       entryContainer.appendChild(entryItem);
-      clone.appendChild(entryContainer);
+      expansionList.appendChild(entryContainer);
     }
   });
   
-  expansionList.replaceWith(clone);
+  // expansionList.replaceWith(clone);
   // expansionList.childNodes = clone;
   // expansionList.appendChild(clone);
 }
